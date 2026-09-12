@@ -26,4 +26,4 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python morning/monitor.py --config morning/sites.yml
+        run: python everymorning/monitor.py --config everymorning/sites.yml
