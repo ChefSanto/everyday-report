@@ -1,0 +1,29 @@
+name: Daily Site Monitor
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # 08:00 Beijing time (UTC+8) — adjust for your morning
+  workflow_dispatch:       # allows manual runs from the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Run health checks
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python morning/monitor.py --config morning/sites.yml
