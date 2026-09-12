@@ -1,0 +1,27 @@
+# ─────────────────────────────────────────────────────────────
+# Site Monitor configuration — add/edit sites here, no code changes needed.
+#
+# Required per site: url
+# Optional:        name, notify (Telegram chat ID for failure alerts),
+#                  pages (list of {path, keyword})
+# If pages is omitted, only the base URL is checked.
+# Keywords must appear in the raw HTML — pick stable text like
+# headlines, your phone number, or the site title.
+# ─────────────────────────────────────────────────────────────────────────────
+
+sites:
+  - name: Pandasail Logistics
+    url: https://pandasail.com/
+    pages:
+      - { path: /,        keyword: "Bridging China and Ghana" }
+      - { path: /about,   keyword: "Who We Are" }
+      - { path: /services, keyword: "shipping effortless" }
+      - { path: /contact, keyword: "+233 0509706396" }
+      - { path: /track,   keyword: "Tracking" }
+
+  # ── template for your other sites ──
+  # - name: My Other Site
+  #   url: https://example.com/
+  #   notify: "123456789"        # optional: different Telegram chat for this site's alerts
+  #   pages:
+  #     - { path: /, keyword: "A headline that never changes" }
