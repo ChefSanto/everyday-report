@@ -1,27 +1,44 @@
-# ─────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────
 # Site Monitor configuration — add/edit sites here, no code changes needed.
 #
-# Required per site: url
-# Optional:        name, notify (Telegram chat ID for failure alerts),
-#                  pages (list of {path, keyword})
-# If pages is omitted, only the base URL is checked.
-# Keywords must appear in the raw HTML — pick stable text like
-# headlines, your phone number, or the site title.
-# ─────────────────────────────────────────────────────────────────────────────
+# Per site:
+#   url           (required) base URL of the site
+#   name          (optional) display name (defaults to the hostname)
+#   notify        (optional) Telegram chat ID for this site's failure alerts
+#   check_links   (optional) probe internal <a href> links on healthy pages
+#   pages         (optional) list of checks; if omitted, only the base URL is checked
+#
+# Per page:
+#   path    URL path (or full URL), e.g. /about
+#   keyword text that must appear in the HTML — pick stable text
+#           (headline, phone number, site title)
+#   track   (optional) record a content hash daily; changes are flagged in the report
+#   strip   (optional, with track) list of regexes removed before hashing,
+#           for volatile content like exchange rates or timestamps
+# ─────────────────────────────────────────────────────────────────────
 
 sites:
   - name: Pandasail Logistics
     url: https://pandasail.com/
+    check_links: true
     pages:
-      - { path: /,        keyword: "Bridging China and Ghana" }
-      - { path: /about,   keyword: "Who We Are" }
-      - { path: /services, keyword: "shipping effortless" }
-      - { path: /contact, keyword: "+233 0509706396" }
-      - { path: /track,   keyword: "Tracking" }
+      - path: /
+        keyword: "Bridging China and Ghana"
+        track: true
+        strip:
+          - '1 USD = [\d.]+ GHS'   # live exchange rate — changes twice daily
+          - '1 USD = [\d.]+ CNY'
+          - '1 CNY = [\d.]+ GHS'
+          - 'Last: [^<]+'           # rate timestamp
+      - { path: /about,    keyword: "Who We Are",        track: true }
+      - { path: /services, keyword: "shipping effortless", track: true }
+      - { path: /contact,  keyword: "+233 0509706396",   track: true }
+      - { path: /track,    keyword: "Tracking" }
 
   # ── template for your other sites ──
   # - name: My Other Site
   #   url: https://example.com/
-  #   notify: "123456789"        # optional: different Telegram chat for this site's alerts
+  #   check_links: true
+  #   notify: "123456789"      # optional: different Telegram chat for this site's alerts
   #   pages:
-  #     - { path: /, keyword: "A headline that never changes" }
+  #     - { path: /, keyword: "A headline that never changes", track: true }
