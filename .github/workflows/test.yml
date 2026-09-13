@@ -1,4 +1,4 @@
-name: Daily Site Monitor
+name: Test Daily Site
 
 on:
   schedule:
