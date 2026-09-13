@@ -2,7 +2,7 @@ name: Daily Site Monitor
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # 08:00 Beijing time (UTC+8) — adjust for your morning
+    - cron: "7 0 * * *"   # 08:07 Beijing time (UTC+8) — adjust for your morning
   workflow_dispatch:       # allows manual runs from the Actions tab
 
 permissions:
