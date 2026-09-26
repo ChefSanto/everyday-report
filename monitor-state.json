@@ -1,18 +1,18 @@
 {
   "https://pandasail.com/": {
-    "date": "2026-09-25",
-    "sha256": "1898e70992f7d297b611bb8adeded5da09f100b4467d7e22b6530db0f5f39aaa"
+    "date": "2026-09-26",
+    "sha256": "26e127d11bd96d2aee88a1364a84183815873edd31a4f49c2dc749ab719b53ba"
   },
   "https://pandasail.com/about": {
-    "date": "2026-09-25",
-    "sha256": "2d4530dba164066beda6ba4211e39bf4879a556711290ea3aadf4ca393ba6b1e"
+    "date": "2026-09-26",
+    "sha256": "289b948bedd2b4745ec44bc66a93e4d64e4e6bd542ad1cb49de3d1c6ad56a3f1"
   },
   "https://pandasail.com/contact": {
-    "date": "2026-09-25",
-    "sha256": "d8b048515920ec0a237d958451bfc2900ecd4ba3545f0792332364afd1a9c3e6"
+    "date": "2026-09-26",
+    "sha256": "fda7f86353e7e44294d474c42b41135d39e4d17c7529d4d8b925d5beaed094aa"
   },
   "https://pandasail.com/services": {
-    "date": "2026-09-25",
-    "sha256": "b54ea81aea7b3a65a26fb66676bb22c449d85978a1ceb9c6995ec7931975fc1e"
+    "date": "2026-09-26",
+    "sha256": "65079e1ed535a20327a7f4cd6c0e9804336f2de113f9c8ab3d487e19809a1b75"
   }
 }
